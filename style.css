@@ -1,0 +1,416 @@
+/* --- 1. Global Styles & Reset --- */
+:root {
+    --primary-green: #38a169;
+    --light-green: #68d391;
+    --dark-text: #2d3748;
+    --light-bg: #f7fafc;
+    --white: #ffffff;
+    --grey-border: #e2e8f0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--dark-text);
+    line-height: 1.6;
+    background-color: var(--white);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    margin-bottom: 0.5em;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 1.5em;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--primary-green);
+    color: var(--white);
+    padding: 12px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #2f855a;
+}
+
+/* --- 2. Header and Navigation --- */
+header {
+    background-color: var(--white);
+    padding: 15px 0;
+    border-bottom: 1px solid var(--grey-border);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--primary-green);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: var(--dark-text);
+    margin-left: 25px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+    color: var(--primary-green);
+}
+
+.cta-link {
+    background-color: var(--primary-green);
+    color: var(--white) !important;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+.burger-menu {
+    font-size: 2em;
+    cursor: pointer;
+    display: none; /* Hidden on desktop */
+}
+
+/* --- 3. Hero Section --- */
+.hero-section {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('hero-bg.jpg') center/cover no-repeat;
+    /* NOTE: You will need to replace 'hero-bg.jpg' with a real image */
+    padding: 100px 0;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-content {
+    color: var(--white);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content h1 {
+    font-size: 3.5em;
+    margin-bottom: 10px;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+/* --- 4. Feature Section --- */
+.features-section {
+    padding: 80px 20px;
+    background-color: var(--light-bg);
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    text-align: center;
+}
+
+.feature-item .icon {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.feature-item h3 {
+    color: var(--primary-green);
+    font-size: 1.25em;
+}
+
+/* --- 5. Interactive Showcase (Tabs) --- */
+.interactive-showcase {
+    padding: 80px 20px;
+}
+
+.device-tabs {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.tab-button {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--dark-text);
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s;
+}
+
+.tab-button.active {
+    color: var(--primary-green);
+    border-bottom-color: var(--primary-green);
+}
+
+.tab-content {
+    min-height: 250px; /* Prevent layout shift */
+}
+
+.device-content {
+    display: none; /* Controlled by JavaScript */
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    align-items: center;
+    border: 1px solid var(--grey-border);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.device-content.active {
+    display: grid; /* Display when active */
+}
+
+.device-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.device-content h3 {
+    color: var(--primary-green);
+    font-size: 1.75em;
+}
+
+/* --- 6. Testimonials Carousel --- */
+.testimonials-section {
+    background-color: var(--light-bg);
+    padding: 80px 0;
+    text-align: center;
+}
+
+.testimonial-carousel {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    /* JS will set a container width and transform property */
+}
+
+.testimonial-item {
+    min-width: 100%;
+    padding: 40px;
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.testimonial-item.active {
+    opacity: 1;
+    position: relative;
+}
+
+.testimonial-item p {
+    font-style: italic;
+    font-size: 1.1em;
+}
+
+.testimonial-item span {
+    display: block;
+    margin-top: 15px;
+    font-weight: 600;
+    color: var(--primary-green);
+}
+
+.carousel-nav {
+    margin-top: 20px;
+}
+
+.nav-button {
+    background: var(--primary-green);
+    color: var(--white);
+    border: none;
+    padding: 8px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 1.2em;
+    line-height: 1;
+    transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+    background-color: #2f855a;
+}
+
+/* --- 7. CTA Form Section --- */
+.cta-form-section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.cta-form-section input[type="text"],
+.cta-form-section input[type="email"] {
+    padding: 12px;
+    margin: 10px 5px;
+    border: 1px solid var(--grey-border);
+    border-radius: 5px;
+    width: 250px;
+    max-width: 100%;
+}
+
+#signup-form {
+    margin-top: 20px;
+}
+
+#form-message {
+    color: var(--primary-green);
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* --- 8. Footer --- */
+footer {
+    background-color: var(--dark-text);
+    color: var(--light-bg);
+    padding: 30px 0;
+    font-size: 0.9em;
+}
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.social-links a {
+    color: var(--light-bg);
+    text-decoration: none;
+    margin-left: 15px;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--primary-green);
+}
+
+
+/* --- 9. Responsive Design (Media Queries) --- */
+@media (max-width: 1024px) {
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide links by default */
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* Adjust based on header height */
+        left: 0;
+        width: 100%;
+        background-color: var(--white);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+        padding: 10px 0;
+    }
+
+    .nav-links.active {
+        display: flex; /* Show when active */
+    }
+
+    .nav-links li {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .burger-menu {
+        display: block; /* Show burger menu */
+    }
+
+    .device-content {
+        grid-template-columns: 1fr; /* Stack content vertically */
+        text-align: center;
+    }
+    
+    .device-content img {
+        margin: 0 auto 20px;
+        max-width: 80%;
+    }
+
+    .cta-form-section input {
+        width: 90%;
+        margin: 10px 0;
+    }
+    
+    footer .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .social-links {
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+    
+    h2 {
+        font-size: 1.8em;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr; /* Single column layout */
+    }
+    
+    .tab-button {
+        display: block;
+        margin: 10px auto;
+    }
+}
